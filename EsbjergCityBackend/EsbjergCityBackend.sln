@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsbjergCityBackend", "Esbje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EsbjergCityBackend.Tests", "EsbjergCityBackend.Tests\EsbjergCityBackend.Tests.csproj", "{C749656B-BF97-4DC7-8553-D52E8DC7F98D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{53915617-6734-4D92-8D76-4A838DBA79D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C749656B-BF97-4DC7-8553-D52E8DC7F98D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C749656B-BF97-4DC7-8553-D52E8DC7F98D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C749656B-BF97-4DC7-8553-D52E8DC7F98D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53915617-6734-4D92-8D76-4A838DBA79D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53915617-6734-4D92-8D76-4A838DBA79D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53915617-6734-4D92-8D76-4A838DBA79D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53915617-6734-4D92-8D76-4A838DBA79D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
