@@ -1,33 +1,60 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Context;
 
 namespace DataAccessLayer.Repository
 {
-     class GiftCardRepo : IRepository<GiftCard>
+    class GiftCardRepo : IRepository<GiftCard>
     {
-         public List<GiftCard> GetAll()
-         {
-             throw new System.NotImplementedException();
-         }
 
-         public GiftCard Get(int id)
-         {
-             throw new System.NotImplementedException();
-         }
+        public List<GiftCard> GetAll()
+        {
+            using (var db = new EsbjergCityContext())
+            {
+                return db.GiftCards.ToList();
+            }
+        }
 
-         public bool Remove(GiftCard t)
-         {
-             throw new System.NotImplementedException();
-         }
+        public GiftCard Get(int id)
+        {
+            using (var db = new EsbjergCityContext())
+            {
+                return db.GiftCards.FirstOrDefault(x => x.Id == id);
+            }
+        }
 
-         public GiftCard Update(GiftCard t)
-         {
-             throw new System.NotImplementedException();
-         }
+        public bool Remove(GiftCard t)
+        {
+            using (var db = new EsbjergCityContext())
+            {
+                db.Entry(t).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                return true;
+            }
+        }
 
-         public GiftCard Create(GiftCard t)
-         {
-             throw new System.NotImplementedException();
-         }
+        public GiftCard Update(GiftCard t)
+        {
+            using (var db = new EsbjergCityContext())
+            {
+                db.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return t;
+            }
+        }
+
+        public GiftCard Create(GiftCard t)
+        {
+            using (var db = new EsbjergCityContext())
+            {
+                db.GiftCards.Add(t);
+                db.SaveChanges();
+                return t;
+            }
+        }
     }
 }

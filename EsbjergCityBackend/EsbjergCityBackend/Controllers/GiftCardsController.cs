@@ -10,24 +10,25 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
+using DataAccessLayer;
 
 namespace EsbjergCityBackend.Controllers
 {
     public class GiftCardsController : ApiController
     {
-        private EsbjergCityContext db = new EsbjergCityContext();
+        private readonly IRepository<GiftCard> _gr = new Facade().GetGiftcardRepo();
 
         // GET: api/GiftCards
-        public IQueryable<GiftCard> GetGiftCards()
+        public List<GiftCard> GetGiftCards()
         {
-            return db.GiftCards;
+            return _gr.GetAll();
         }
 
         // GET: api/GiftCards/5
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult GetGiftCard(int id)
         {
-            GiftCard giftCard = db.GiftCards.Find(id);
+            GiftCard giftCard = _gr.Get(id);
             if (giftCard == null)
             {
                 return NotFound();
@@ -50,23 +51,7 @@ namespace EsbjergCityBackend.Controllers
                 return BadRequest();
             }
 
-            db.Entry(giftCard).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!GiftCardExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _gr.Update(giftCard);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
@@ -80,8 +65,7 @@ namespace EsbjergCityBackend.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.GiftCards.Add(giftCard);
-            db.SaveChanges();
+            _gr.Create(giftCard);
 
             return CreatedAtRoute("DefaultApi", new { id = giftCard.Id }, giftCard);
         }
@@ -90,30 +74,14 @@ namespace EsbjergCityBackend.Controllers
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult DeleteGiftCard(int id)
         {
-            GiftCard giftCard = db.GiftCards.Find(id);
+            GiftCard giftCard = _gr.Get(id);
             if (giftCard == null)
             {
                 return NotFound();
             }
 
-            db.GiftCards.Remove(giftCard);
-            db.SaveChanges();
-
+            _gr.Remove(giftCard);
             return Ok(giftCard);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool GiftCardExists(int id)
-        {
-            return db.GiftCards.Count(e => e.Id == id) > 0;
         }
     }
 }
