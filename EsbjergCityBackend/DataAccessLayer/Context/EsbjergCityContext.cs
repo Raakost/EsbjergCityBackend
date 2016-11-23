@@ -10,9 +10,10 @@ namespace DataAccessLayer.Context
 {
     public class EsbjergCityContext : DbContext
     {
-        public EsbjergCityContext() : base("EsbjergCityDb")
+        public EsbjergCityContext() : base("EsbjergCity")
         {
             Configuration.ProxyCreationEnabled = false;
+            Database.SetInitializer(new DbInit());
         }
 
         public virtual DbSet<Order> Orders { get; set; }
