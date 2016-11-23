@@ -10,110 +10,78 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
+using DataAccessLayer;
 
 namespace EsbjergCityBackend.Controllers
 {
     public class EventsController : ApiController
     {
-        private EsbjergCityContext db = new EsbjergCityContext();
+        private readonly IRepository<Event> _er = new Facade().GetEventRepo();
 
         // GET: api/Events
-        public IQueryable<Event> GetEvents()
+        public List<Event> GetEvents()
         {
-            return db.Events;
+            return _er.GetAll();
         }
 
         // GET: api/Events/5
         [ResponseType(typeof(Event))]
         public IHttpActionResult GetEvent(int id)
         {
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+            Event _event = _er.Get(id);
+            if (_event == null)
             {
                 return NotFound();
             }
 
-            return Ok(@event);
+            return Ok(_event);
         }
 
         // PUT: api/Events/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutEvent(int id, Event @event)
+        public IHttpActionResult PutEvent(int id, Event _event)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != @event.Id)
+            if (id != _event.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(@event).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EventExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            _er.Update(_event);
             return StatusCode(HttpStatusCode.NoContent);
         }
 
         // POST: api/Events
         [ResponseType(typeof(Event))]
-        public IHttpActionResult PostEvent(Event @event)
+        public IHttpActionResult PostEvent(Event _event)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Events.Add(@event);
-            db.SaveChanges();
+            _er.Create(_event);
 
-            return CreatedAtRoute("DefaultApi", new { id = @event.Id }, @event);
+            return CreatedAtRoute("DefaultApi", new { id = _event.Id }, _event);
         }
 
         // DELETE: api/Events/5
         [ResponseType(typeof(Event))]
         public IHttpActionResult DeleteEvent(int id)
         {
-            Event @event = db.Events.Find(id);
-            if (@event == null)
+            Event _event = _er.Get(id);
+            if (_event == null)
             {
                 return NotFound();
             }
 
-            db.Events.Remove(@event);
-            db.SaveChanges();
+            _er.Remove(_event);
 
-            return Ok(@event);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool EventExists(int id)
-        {
-            return db.Events.Count(e => e.Id == id) > 0;
+            return Ok(_event);
         }
     }
 }

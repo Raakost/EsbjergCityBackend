@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using DataAccessLayer;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Context;
+using System.Linq;
 
 namespace DataAccessLayer.Repository
 {
@@ -8,27 +10,48 @@ namespace DataAccessLayer.Repository
     {
          public List<Event> GetAll()
          {
-             throw new System.NotImplementedException();
-         }
+            using (var db = new EsbjergCityContext())
+            {
+                return db.Events.ToList();
+            }
+        }
 
          public Event Get(int id)
          {
-             throw new System.NotImplementedException();
-         }
+            using (var db = new EsbjergCityContext())
+            {
+                return db.Events.FirstOrDefault(x => x.Id == id);
+            }
+        }
 
          public bool Remove(Event t)
          {
-             throw new System.NotImplementedException();
-         }
+            using (var db = new EsbjergCityContext())
+            {
+                db.Entry(t).State = System.Data.Entity.EntityState.Deleted;
+                db.SaveChanges();
+                return true;
+            }
+        }
 
          public Event Update(Event t)
          {
-             throw new System.NotImplementedException();
-         }
+            using (var db = new EsbjergCityContext())
+            {
+                db.Entry(t).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+                return t;
+            }
+        }
 
          public Event Create(Event t)
          {
-             throw new System.NotImplementedException();
-         }
+            using (var db = new EsbjergCityContext())
+            {
+                db.Events.Add(t);
+                db.SaveChanges();
+                return t;
+            }
+        }
     }
 }
