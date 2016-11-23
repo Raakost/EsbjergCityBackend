@@ -41,6 +41,8 @@ namespace DataAccessLayer.Context
                 Lastname = "bobbo",
                 City = "Esbjerg",
                 Zipcode = 6700,
+                Street = "EsbjergGade",
+                StreetNumber = 1,
                 Email = "jens@esbjerg.dk",
                 Password = "",
                 Orders = new List<Order>() { o1 }
@@ -52,6 +54,8 @@ namespace DataAccessLayer.Context
                 Lastname = "Hansen",
                 City = "Esbjerg",
                 Zipcode = 6700,
+                Street = "EsbjergGade",
+                StreetNumber = 2,
                 Email = "hans@esbjerg.dk",
                 Password = "",
                 Orders = new List<Order>() { o2 }
@@ -63,6 +67,8 @@ namespace DataAccessLayer.Context
                 Lastname = "Larsen",
                 City = "Esbjerg",
                 Zipcode = 6700,
+                Street = "EsbjergGade",
+                StreetNumber = 3,
                 Email = "lars@esbjerg.dk",
                 Password = "",
                 Orders = new List<Order>() { }
