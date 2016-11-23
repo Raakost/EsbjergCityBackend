@@ -12,17 +12,14 @@ namespace DataAccessLayer.Context
     {
         protected override void Seed(EsbjergCityContext db)
         {
-            //GIFTCARD
-            var g1 = new GiftCard { Amount = 200.00, Id = 1, CardNumber = "123" };
-            var g2 = new GiftCard { Amount = 500.00, Id = 2, CardNumber = "789" };
-            var g3 = new GiftCard { Amount = 1000.00, Id = 3, CardNumber = "456" };
+            var g1 = new GiftCard() { Amount = 200.00, CardNumber = "123" };
+            var g2 = new GiftCard() { Amount = 500.00, CardNumber = "789" };
+            var g3 = new GiftCard() { Amount = 1000.00, CardNumber = "456" };
 
-            //ORDER
-            var o1 = new Order { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g1, g2 } };
-            var o2 = new Order { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g3 } };
+            var o1 = new Order() { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard>() { g1, g2 } };
+            var o2 = new Order() { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard>() { g3 } };
 
-            //ADMIN
-            var a1 = new Admin
+            var a1 = new Admin()
             {
                 Email = "admin@esbjerg.dk",
                 Firstname = "Brigitta",
@@ -30,8 +27,7 @@ namespace DataAccessLayer.Context
                 Password = "pw"
             };
 
-            //EVENT
-            var e1 = new Event
+            var e1 = new Event()
             {
                 DateOfEvent = DateTime.Now,
                 Description = "Test Event description",
@@ -39,8 +35,7 @@ namespace DataAccessLayer.Context
                 Img = "img test"
             };
 
-            //CUSTOMER
-            var c1 = new Customer
+            var c1 = new Customer()
             {
                 Firstname = "jens",
                 Lastname = "bobbo",
@@ -50,10 +45,10 @@ namespace DataAccessLayer.Context
                 StreetNumber = 1,
                 Email = "jens@esbjerg.dk",
                 Password = "",
-                Orders = new List<Order> { o1 }
+                Orders = new List<Order>() { o1 }
             };
 
-            var c2 = new Customer
+            var c2 = new Customer()
             {
                 Firstname = "Hans",
                 Lastname = "Hansen",
@@ -63,10 +58,10 @@ namespace DataAccessLayer.Context
                 StreetNumber = 2,
                 Email = "hans@esbjerg.dk",
                 Password = "",
-                Orders = new List<Order> { o2 }
+                Orders = new List<Order>() { o1, o2 }
             };
 
-            var c3 = new Customer
+            var c3 = new Customer()
             {
                 Firstname = "Lars",
                 Lastname = "Larsen",
@@ -76,10 +71,9 @@ namespace DataAccessLayer.Context
                 StreetNumber = 3,
                 Email = "lars@esbjerg.dk",
                 Password = "",
-                Orders = new List<Order> { }
+                Orders = new List<Order>() { }
             };
 
-            //SEED TO DB
             db.Customers.Add(c1);
             db.Customers.Add(c2);
             db.Customers.Add(c3);
