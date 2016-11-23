@@ -12,9 +12,9 @@ namespace DataAccessLayer.Context
     {
         protected override void Seed(EsbjergCityContext db)
         {
-            var g1 = new GiftCard() { Amount = 200.00, Id = 1, CardNumber = "123" };
-            var g2 = new GiftCard() { Amount = 500.00, Id = 2, CardNumber = "789" };
-            var g3 = new GiftCard() { Amount = 1000.00, Id = 3, CardNumber = "456" };
+            var g1 = new GiftCard() { Amount = 200.00, CardNumber = "123" };
+            var g2 = new GiftCard() { Amount = 500.00, CardNumber = "789" };
+            var g3 = new GiftCard() { Amount = 1000.00, CardNumber = "456" };
 
             var o1 = new Order() { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard>() { g1, g2 } };
             var o2 = new Order() { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard>() { g3 } };
@@ -58,7 +58,7 @@ namespace DataAccessLayer.Context
                 StreetNumber = 2,
                 Email = "hans@esbjerg.dk",
                 Password = "",
-                Orders = new List<Order>() { o2 }
+                Orders = new List<Order>() { o1, o2 }
             };
 
             var c3 = new Customer()

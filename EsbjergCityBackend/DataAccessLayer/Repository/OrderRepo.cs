@@ -29,7 +29,7 @@ namespace DataAccessLayer.Repository
         {
             using (var db = new EsbjergCityContext())
             {
-                return db.Orders.FirstOrDefault(x => x.Id == id);
+                return db.Orders.Include("GiftCards").FirstOrDefault(x => x.Id == id);
             }
         }
 
