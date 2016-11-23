@@ -28,7 +28,7 @@ namespace DataAccessLayer
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
-        bool Remove(T t);
+        bool Delete(T t);
 
         /// <summary>
         /// Update/Replace objects in the Repositorys list, that have the same ID as the given object.

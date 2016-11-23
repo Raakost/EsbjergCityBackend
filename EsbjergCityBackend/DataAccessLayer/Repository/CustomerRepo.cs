@@ -23,7 +23,7 @@ namespace DataAccessLayer.Repository
             throw new NotImplementedException();
         }
 
-        public bool Remove(Customer t)
+        public bool Delete(Customer t)
         {
             throw new NotImplementedException();
         }

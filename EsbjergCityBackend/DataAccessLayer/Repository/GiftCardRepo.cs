@@ -27,7 +27,7 @@ namespace DataAccessLayer.Repository
             }
         }
 
-        public bool Remove(GiftCard t)
+        public bool Delete(GiftCard t)
         {
             using (var db = new EsbjergCityContext())
             {

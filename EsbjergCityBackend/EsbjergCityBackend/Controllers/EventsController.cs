@@ -79,7 +79,7 @@ namespace EsbjergCityBackend.Controllers
                 return NotFound();
             }
 
-            _er.Remove(_event);
+            _er.Delete(_event);
 
             return Ok(_event);
         }

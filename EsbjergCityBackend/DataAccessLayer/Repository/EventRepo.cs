@@ -24,7 +24,7 @@ namespace DataAccessLayer.Repository
             }
         }
 
-         public bool Remove(Event t)
+         public bool Delete(Event t)
          {
             using (var db = new EsbjergCityContext())
             {

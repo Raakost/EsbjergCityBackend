@@ -80,7 +80,7 @@ namespace EsbjergCityBackend.Controllers
                 return NotFound();
             }
 
-            _gr.Remove(giftCard);
+            _gr.Delete(giftCard);
             return Ok(giftCard);
         }
     }

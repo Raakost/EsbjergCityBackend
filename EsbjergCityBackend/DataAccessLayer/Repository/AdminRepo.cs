@@ -15,7 +15,7 @@ namespace DataAccessLayer.Repository
             throw new System.NotImplementedException();
         }
 
-        public bool Remove(Admin t)
+        public bool Delete(Admin t)
         {
             throw new System.NotImplementedException();
         }
