@@ -23,7 +23,7 @@ namespace DataAccessLayer.Context
 
         protected override void OnModelCreating(DbModelBuilder modelbuilder)
         {
-            modelbuilder.Entity<Customer>().HasMany(o => o.Orders);
+            modelbuilder.Entity<Customer>().HasMany<Order>(o => o.Orders);
             modelbuilder.Entity<Order>().HasMany(g => g.GiftCards);
             base.OnModelCreating(modelbuilder);
         }
