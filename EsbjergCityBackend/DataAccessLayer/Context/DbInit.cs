@@ -34,9 +34,55 @@ namespace DataAccessLayer.Context
             var e1 = new Event
             {
                 DateOfEvent = DateTime.Now,
-                Description = "Test Event description",
-                Title = "event title",
-                Img = "img test"
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                              "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Title of event 1",
+                Img = "http://lorempixel.com/300/300"
+            };
+
+            var e2 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddMonths(+1),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                              "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Title of event 2",
+                Img = "http://lorempixel.com/300/300"
+            };
+
+            var e3 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddMonths(+2),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                              "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Title of event 3",
+                Img = "http://lorempixel.com/300/300"
+            };
+
+            var e4 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddMonths(+3),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                              "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Title of event 4",
+                Img = "http://lorempixel.com/300/300"
+            };
+
+            var e5 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddMonths(+4),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                              "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Title of event 5",
+                Img = "http://lorempixel.com/300/300"
+            };
+
+            var e6 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddMonths(+5),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                              "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Title of event 6",
+                Img = "http://lorempixel.com/300/300"
             };
 
             //CUSTOMER
@@ -84,6 +130,11 @@ namespace DataAccessLayer.Context
             db.Customers.Add(c2);
             db.Customers.Add(c3);
             db.Events.Add(e1);
+            db.Events.Add(e2);
+            db.Events.Add(e3);
+            db.Events.Add(e4);
+            db.Events.Add(e5);
+            db.Events.Add(e6);
             db.Admins.Add(a1);
 
             base.Seed(db);
