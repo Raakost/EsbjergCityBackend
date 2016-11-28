@@ -53,12 +53,7 @@ namespace DataAccessLayer.Repository
 
         public Order Update(Order t)
         {
-            using (var db = new EsbjergCityContext())
-            {
-                db.Entry(t).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
-                return t;
-            }
+            throw new NotImplementedException();
         }
     }
 }

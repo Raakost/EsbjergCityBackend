@@ -63,7 +63,7 @@ namespace DataAccessLayer.Context
                 StreetNumber = 2,
                 Email = "hans@esbjerg.dk",
                 Password = "",
-                Orders = new List<Order> { o1, o2 }
+                Orders = new List<Order> { o2 }
             };
 
             var c3 = new Customer
