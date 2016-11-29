@@ -8,7 +8,7 @@ using DataAccessLayer.Entities;
 
 namespace DataAccessLayer.Context
 {
-    public class DbInit : CreateDatabaseIfNotExists<EsbjergCityContext>
+    public class DbInit : DropCreateDatabaseAlways<EsbjergCityContext>
     {
         protected override void Seed(EsbjergCityContext db)
         {
@@ -33,57 +33,85 @@ namespace DataAccessLayer.Context
             //EVENT
             var e1 = new Event
             {
-                DateOfEvent = DateTime.Now,
+                DateOfEvent = DateTime.Now.AddYears(1),
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
                               "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
-                Title = "Title of event 1",
-                Img = "http://lorempixel.com/300/300"
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/1.jpg"
             };
 
             var e2 = new Event
             {
-                DateOfEvent = DateTime.Now.AddMonths(+1),
+                DateOfEvent = DateTime.Now.AddYears(1),
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
                               "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
-                Title = "Title of event 2",
-                Img = "http://lorempixel.com/300/300"
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/2.jpg"
             };
 
             var e3 = new Event
             {
-                DateOfEvent = DateTime.Now.AddMonths(+2),
+                DateOfEvent = DateTime.Now.AddYears(1),
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
                               "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
-                Title = "Title of event 3",
-                Img = "http://lorempixel.com/300/300"
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/3.jpg"
             };
 
             var e4 = new Event
             {
-                DateOfEvent = DateTime.Now.AddMonths(+3),
+                DateOfEvent = DateTime.Now.AddYears(1),
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
                               "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
-                Title = "Title of event 4",
-                Img = "http://lorempixel.com/300/300"
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/4.jpg"
             };
 
             var e5 = new Event
             {
-                DateOfEvent = DateTime.Now.AddMonths(+4),
+                DateOfEvent = DateTime.Now.AddYears(1),
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
                               "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
-                Title = "Title of event 5",
-                Img = "http://lorempixel.com/300/300"
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/5.jpg"
             };
 
             var e6 = new Event
             {
-                DateOfEvent = DateTime.Now.AddMonths(+5),
+                DateOfEvent = DateTime.Now.AddYears(1),
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
                               "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
-                Title = "Title of event 6",
-                Img = "http://lorempixel.com/300/300"
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/6.jpg"
             };
+
+            var e7 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddYears(1),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                              "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/7.jpg"
+            };
+
+            var e8 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddYears(1),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                             "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/8.jpg"
+            };
+
+            var e9 = new Event
+            {
+                DateOfEvent = DateTime.Now.AddYears(1),
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin porttitor maximus lobortis. Etiam hendrerit et nisl id fringilla. Curabitur sit amet molestie purus. Nullam faucibus at neque malesuada volutpat. Fusce lorem ipsum, auctor sit amet neque sed, euismod sagittis justo. Pellentesque et massa a nibh iaculis tincidunt. Nullam sed metus lacinia, mattis ex nec, placerat nunc. Pellentesque lacinia dui nec eros gravida, eu elementum tortor finibus. Mauris semper dolor in ipsum posuere finibus. Sed placerat, sapien id pharetra maximus, mauris sapien condimentum nunc, sit amet finibus ipsum ante molestie urna." +
+                          "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
+                Title = "Lorem ipsum",
+                Img = "/Content/Images/9.jpg"
+            };
+
 
             //CUSTOMER
             var c1 = new Customer
@@ -135,6 +163,9 @@ namespace DataAccessLayer.Context
             db.Events.Add(e4);
             db.Events.Add(e5);
             db.Events.Add(e6);
+            db.Events.Add(e7);
+            db.Events.Add(e8);
+            db.Events.Add(e9);
             db.Admins.Add(a1);
 
             base.Seed(db);
