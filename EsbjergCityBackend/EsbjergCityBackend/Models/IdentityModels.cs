@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Data.Entity;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -21,13 +22,40 @@ namespace EsbjergCityBackend.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("EsbjergCity", throwIfV1Schema: false)
         {
+            Database.SetInitializer(new IdentityDbInit());
         }
         
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+    }
+
+    public class IdentityDbInit : DropCreateDatabaseAlways<ApplicationDbContext>
+    {
+        protected override void Seed(ApplicationDbContext db)
+        {
+            var userStore = new UserStore<ApplicationUser>(db);
+            var userManager = new ApplicationUserManager(userStore);
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+
+            roleManager.Create(new IdentityRole("Admin"));
+
+            var admin = new ApplicationUser
+            {
+                UserName = "Admin",
+                Email = "admin@admin.dk"
+            };
+            var user = new ApplicationUser
+            {
+                UserName = "User",
+                Email = "user@user.dk"
+            };
+            userManager.Create(admin, "Test1!");
+            userManager.Create(user, "Test1!");
+            userManager.AddToRole(admin.Id, "Admin");
         }
     }
 }
