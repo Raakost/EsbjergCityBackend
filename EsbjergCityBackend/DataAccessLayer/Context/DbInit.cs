@@ -18,8 +18,8 @@ namespace DataAccessLayer.Context
             var g3 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
 
             //ORDER
-            var o1 = new Order { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g1, g2 } };
-            var o2 = new Order { DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g3 } };
+            var o1 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g1, g2 } };
+            var o2 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g3 } };
 
             //ADMIN
             var a1 = new Admin

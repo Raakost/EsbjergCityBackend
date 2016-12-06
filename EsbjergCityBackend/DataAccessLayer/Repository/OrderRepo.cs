@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using DataAccessLayer.Context;
@@ -53,7 +54,17 @@ namespace DataAccessLayer.Repository
 
         public Order Update(Order t)
         {
-            throw new NotImplementedException();
+            using (var db = new EsbjergCityContext())
+            {
+                var orderToUpdate = db.Orders.Include("GiftCards").FirstOrDefault(x => x.Id == t.Id);
+                if (orderToUpdate != null)
+                {
+                    orderToUpdate.DateOfPurchase = t.DateOfPurchase;
+                    orderToUpdate.IsCompleted = t.IsCompleted;
+                }
+                db.SaveChanges();
+                return t;
+            }
         }
     }
 }
