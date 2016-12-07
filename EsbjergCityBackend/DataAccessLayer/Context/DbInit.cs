@@ -16,10 +16,16 @@ namespace DataAccessLayer.Context
             var g1 = new GiftCard { Amount = 200.00, CardNumber = "123" };
             var g2 = new GiftCard { Amount = 500.00, CardNumber = "789" };
             var g3 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
+            var g4 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
+            var g5 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
+            var g6 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
 
             //ORDER
             var o1 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g1, g2 } };
             var o2 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g3 } };
+            var o3 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g4 } };
+            var o4 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g5 } };
+            var o5 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g6 } };
 
             //ADMIN
             var a1 = new Admin
@@ -142,21 +148,35 @@ namespace DataAccessLayer.Context
 
             var c3 = new Customer
             {
-                Firstname = "Lars",
+                Firstname = "Jørgen",
+                Lastname = "Hansen",
+                City = "Esbjerg",
+                Zipcode = 6700,
+                Street = "EsbjergGade",
+                StreetNumber = 2,
+                Email = "jørgen@esbjerg.dk",
+                Password = "",
+                Orders = new List<Order> { o3, o4 }
+            };
+
+            var c4 = new Customer
+            {
+                Firstname = "Jytte",
                 Lastname = "Larsen",
                 City = "Esbjerg",
                 Zipcode = 6700,
                 Street = "EsbjergGade",
                 StreetNumber = 3,
-                Email = "lars@esbjerg.dk",
+                Email = "jytte@esbjerg.dk",
                 Password = "",
-                Orders = new List<Order> { }
+                Orders = new List<Order> { o5 }
             };
 
             //SEED DB
             db.Customers.Add(c1);
             db.Customers.Add(c2);
             db.Customers.Add(c3);
+            db.Customers.Add(c4);
             db.Events.Add(e1);
             db.Events.Add(e2);
             db.Events.Add(e3);
