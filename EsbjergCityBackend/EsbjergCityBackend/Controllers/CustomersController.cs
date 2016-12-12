@@ -24,7 +24,7 @@ namespace EsbjergCityBackend.Controllers
             return _cr.GetAll();
         }
 
-        // GET: api/Customers/5
+        // GET: api/Customers
         [ResponseType(typeof(Customer))]
         public IHttpActionResult GetCustomer(int id)
         {
@@ -37,7 +37,7 @@ namespace EsbjergCityBackend.Controllers
             return Ok(customer);
         }
 
-        // PUT: api/Customers/5
+        // PUT: api/Customers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCustomer(int id, Customer customer)
         {
@@ -70,7 +70,7 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
         }
 
-        // DELETE: api/Customers/5
+        // DELETE: api/Customers
         [ResponseType(typeof(Customer))]
         public IHttpActionResult DeleteCustomer(int id)
         {

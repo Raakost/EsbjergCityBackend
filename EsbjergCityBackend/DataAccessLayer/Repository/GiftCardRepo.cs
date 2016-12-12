@@ -8,7 +8,7 @@ using DataAccessLayer.Context;
 
 namespace DataAccessLayer.Repository
 {
-    class GiftCardRepo : IRepository<GiftCard>
+    public class GiftCardRepo : IRepository<GiftCard>
     {
 
         public List<GiftCard> GetAll()
@@ -24,6 +24,14 @@ namespace DataAccessLayer.Repository
             using (var db = new EsbjergCityContext())
             {
                 return db.GiftCards.FirstOrDefault(x => x.Id == id);
+            }
+        }
+
+        public GiftCard GetByCardNumber(string cardNumber)
+        {
+            using (var db = new EsbjergCityContext())
+            {
+                return db.GiftCards.FirstOrDefault(x => x.CardNumber == cardNumber);
             }
         }
 

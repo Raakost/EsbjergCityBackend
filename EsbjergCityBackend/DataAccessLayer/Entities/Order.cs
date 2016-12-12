@@ -10,7 +10,6 @@ namespace DataAccessLayer.Entities
     {
         public DateTime DateOfPurchase { get; set; }
         public List<GiftCard> GiftCards { get; set; }
-
         public bool IsCompleted { get; set; }
     }
 }

@@ -15,16 +15,16 @@ using DataAccessLayer.Entities;
 namespace EsbjergCityBackend.Controllers
 {
     public class OrdersController : ApiController
-    {        
+    {
         private readonly IRepository<Order> _or = new Facade().GetOrderRepo();
 
-        [HttpGet]
+        // GET: api/Orders
         public List<Order> GetOrders()
         {
             return _or.GetAll();
         }
 
-        [HttpGet]
+        // GET: api/Orders
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
         {
@@ -36,7 +36,7 @@ namespace EsbjergCityBackend.Controllers
             return Ok(order);
         }
 
-        [HttpPut]
+        // PUT: api/Orders
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
         {
@@ -53,7 +53,7 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpPost]
+        // POST: api/Orders
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
         {
@@ -62,10 +62,10 @@ namespace EsbjergCityBackend.Controllers
                 return BadRequest(ModelState);
             }
             _or.Create(order);
-            return CreatedAtRoute("DefaultApi", new {id = order.Id}, order);
+            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
         }
 
-        [HttpDelete]
+        // DELETE: api/Orders
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
         {

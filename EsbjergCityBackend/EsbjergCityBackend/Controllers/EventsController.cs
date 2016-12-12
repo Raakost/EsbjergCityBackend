@@ -24,7 +24,7 @@ namespace EsbjergCityBackend.Controllers
             return _er.GetAll();
         }
 
-        // GET: api/Events/5
+        // GET: api/Events
         [ResponseType(typeof(Event))]
         public IHttpActionResult GetEvent(int id)
         {
@@ -37,7 +37,7 @@ namespace EsbjergCityBackend.Controllers
             return Ok(_event);
         }
 
-        // PUT: api/Events/5
+        // PUT: api/Events
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEvent(int id, Event _event)
         {
@@ -69,7 +69,7 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = _event.Id }, _event);
         }
 
-        // DELETE: api/Events/5
+        // DELETE: api/Events
         [ResponseType(typeof(Event))]
         public IHttpActionResult DeleteEvent(int id)
         {

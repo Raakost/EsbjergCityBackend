@@ -8,17 +8,17 @@ using DataAccessLayer.Entities;
 
 namespace DataAccessLayer.Context
 {
-    public class DbInit : DropCreateDatabaseAlways<EsbjergCityContext>
+    public class DbInit : CreateDatabaseIfNotExists<EsbjergCityContext>
     {
         protected override void Seed(EsbjergCityContext db)
         {
             //GIFTCARD
             var g1 = new GiftCard { Amount = 200.00, CardNumber = "123" };
             var g2 = new GiftCard { Amount = 500.00, CardNumber = "789" };
-            var g3 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
-            var g4 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
-            var g5 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
-            var g6 = new GiftCard { Amount = 1000.00, CardNumber = "456" };
+            var g3 = new GiftCard { Amount = 100.00, CardNumber = "456" };
+            var g4 = new GiftCard { Amount = 1500.00, CardNumber = "777" };
+            var g5 = new GiftCard { Amount = 400.00, CardNumber = "888" };
+            var g6 = new GiftCard { Amount = 800.00, CardNumber = "999" };
 
             //ORDER
             var o1 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g1, g2 } };
