@@ -25,16 +25,7 @@ namespace DataAccessLayer.Context
             var o2 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g3 } };
             var o3 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g4 } };
             var o4 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g5 } };
-            var o5 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g6 } };
-
-            //ADMIN
-            var a1 = new Admin
-            {
-                Email = "admin@esbjerg.dk",
-                Firstname = "Brigitta",
-                Lastname = "Jensen",
-                Password = "pw"
-            };
+            var o5 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g6 } };            
 
             //EVENT
             var e1 = new Event
@@ -182,7 +173,6 @@ namespace DataAccessLayer.Context
             db.Events.Add(e7);
             db.Events.Add(e8);
             db.Events.Add(e9);
-            db.Admins.Add(a1);
 
             base.Seed(db);
         }

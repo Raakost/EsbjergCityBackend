@@ -57,11 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Repository\AdminRepo.cs" />
     <Compile Include="Context\DbInit.cs" />
     <Compile Include="Context\EsbjergCityContext.cs" />
     <Compile Include="Entities\AbstractId.cs" />
-    <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Event.cs" />
     <Compile Include="Entities\GiftCard.cs" />

@@ -13,7 +13,6 @@ namespace DataAccessLayer
         private IRepository<Customer> _customerRepository;
         private IRepository<Order> _orderRepository;
         private IRepository<Event> _eventRepository;
-        private IRepository<Admin> _adminRepository;
         private GiftCardRepo _giftCardRepository;
 
         public IRepository<Customer> GetCustomerRepo()
@@ -30,12 +29,6 @@ namespace DataAccessLayer
         {
             return _eventRepository ?? (_eventRepository = new EventRepo());
         }
-
-        public IRepository<Admin> GetAdminRepo()
-        {
-            return _adminRepository ?? (_adminRepository = new AdminRepo());
-        }
-
         public GiftCardRepo GetGiftcardRepo()
         {
             return _giftCardRepository ?? (_giftCardRepository = new GiftCardRepo());

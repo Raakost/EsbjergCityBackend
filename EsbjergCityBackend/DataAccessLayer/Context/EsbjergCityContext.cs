@@ -18,7 +18,6 @@ namespace DataAccessLayer.Context
 
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Event> Events { get; set; }
-        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<GiftCard> GiftCards { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
 
