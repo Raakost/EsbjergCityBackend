@@ -12,12 +12,13 @@ using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
 using DataAccessLayer;
 using Microsoft.AspNet.Identity;
+using DataAccessLayer.Repository;
 
 namespace EsbjergCityBackend.Controllers
 {
     public class GiftCardsController : ApiController
     {
-        private readonly IRepository<GiftCard> _gr = new Facade().GetGiftcardRepo();
+        private readonly GiftCardRepo _gr = new Facade().GetGiftcardRepo();
 
         [Authorize(Roles = "Admin")]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -61,6 +62,18 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // GET: api/GiftCards
+        [Route("api/giftcards/GetByCardNumber/{cardNumber}")]
+        public IHttpActionResult GetByCardNumber(string cardNumber)
+        {
+            GiftCard giftCard = _gr.GetByCardNumber(cardNumber);
+            if (giftCard == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(giftCard);
+        }
 
         // POST: api/GiftCards
         [ResponseType(typeof(GiftCard))]
