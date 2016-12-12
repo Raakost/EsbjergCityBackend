@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using DataAccessLayer;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace EsbjergCityBackend.Controllers
 {
@@ -18,6 +19,8 @@ namespace EsbjergCityBackend.Controllers
     {        
         private readonly IRepository<Order> _or = new Facade().GetOrderRepo();
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [HttpGet]
         public List<Order> GetOrders()
         {
@@ -65,6 +68,8 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new {id = order.Id}, order);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [HttpDelete]
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)

@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
 using DataAccessLayer;
+using Microsoft.AspNet.Identity;
 
 namespace EsbjergCityBackend.Controllers
 {
@@ -18,12 +19,14 @@ namespace EsbjergCityBackend.Controllers
     {
         private readonly IRepository<Event> _er = new Facade().GetEventRepo();
 
+        [AllowAnonymous]
         // GET: api/Events
         public List<Event> GetEvents()
         {
             return _er.GetAll();
         }
 
+        [AllowAnonymous]
         // GET: api/Events/5
         [ResponseType(typeof(Event))]
         public IHttpActionResult GetEvent(int id)
@@ -37,6 +40,8 @@ namespace EsbjergCityBackend.Controllers
             return Ok(_event);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // PUT: api/Events/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEvent(int id, Event _event)
@@ -55,6 +60,8 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // POST: api/Events
         [ResponseType(typeof(Event))]
         public IHttpActionResult PostEvent(Event _event)
@@ -69,6 +76,8 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = _event.Id }, _event);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // DELETE: api/Events/5
         [ResponseType(typeof(Event))]
         public IHttpActionResult DeleteEvent(int id)

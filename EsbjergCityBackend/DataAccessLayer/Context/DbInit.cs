@@ -8,7 +8,7 @@ using DataAccessLayer.Entities;
 
 namespace DataAccessLayer.Context
 {
-    public class DbInit : DropCreateDatabaseAlways<EsbjergCityContext>
+    public class DbInit : CreateDatabaseIfNotExists<EsbjergCityContext>
     {
         protected override void Seed(EsbjergCityContext db)
         {
@@ -129,7 +129,6 @@ namespace DataAccessLayer.Context
                 Street = "EsbjergGade",
                 StreetNumber = 1,
                 Email = "jens@esbjerg.dk",
-                Password = "",
                 Orders = new List<Order> { o1 }
             };
 
@@ -142,7 +141,6 @@ namespace DataAccessLayer.Context
                 Street = "EsbjergGade",
                 StreetNumber = 2,
                 Email = "hans@esbjerg.dk",
-                Password = "",
                 Orders = new List<Order> { o2 }
             };
 
@@ -155,7 +153,6 @@ namespace DataAccessLayer.Context
                 Street = "EsbjergGade",
                 StreetNumber = 2,
                 Email = "jørgen@esbjerg.dk",
-                Password = "",
                 Orders = new List<Order> { o3, o4 }
             };
 
@@ -168,7 +165,6 @@ namespace DataAccessLayer.Context
                 Street = "EsbjergGade",
                 StreetNumber = 3,
                 Email = "jytte@esbjerg.dk",
-                Password = "",
                 Orders = new List<Order> { o5 }
             };
 

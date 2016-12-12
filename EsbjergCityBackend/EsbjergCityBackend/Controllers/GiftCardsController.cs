@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
 using DataAccessLayer;
+using Microsoft.AspNet.Identity;
 
 namespace EsbjergCityBackend.Controllers
 {
@@ -18,12 +19,14 @@ namespace EsbjergCityBackend.Controllers
     {
         private readonly IRepository<GiftCard> _gr = new Facade().GetGiftcardRepo();
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // GET: api/GiftCards
         public List<GiftCard> GetGiftCards()
         {
             return _gr.GetAll();
         }
-
+        
         // GET: api/GiftCards/5
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult GetGiftCard(int id)
@@ -37,6 +40,8 @@ namespace EsbjergCityBackend.Controllers
             return Ok(giftCard);
         }
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // PUT: api/GiftCards/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGiftCard(int id, GiftCard giftCard)
@@ -55,6 +60,7 @@ namespace EsbjergCityBackend.Controllers
 
             return StatusCode(HttpStatusCode.NoContent);
         }
+
 
         // POST: api/GiftCards
         [ResponseType(typeof(GiftCard))]

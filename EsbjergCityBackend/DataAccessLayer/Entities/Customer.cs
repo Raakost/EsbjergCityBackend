@@ -11,7 +11,6 @@ namespace DataAccessLayer.Entities
         public string Firstname { get; set; }
         public string Lastname { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }    //not sure how to...
         public string Street { get; set; }
         public int StreetNumber { get; set; }
         public int Zipcode { get; set; }
