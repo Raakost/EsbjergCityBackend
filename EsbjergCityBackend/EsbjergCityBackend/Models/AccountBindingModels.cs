@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
+using DataAccessLayer.Entities;
 
 namespace EsbjergCityBackend.Models
 {
@@ -48,6 +49,8 @@ namespace EsbjergCityBackend.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public Customer Customer { get; set; }
     }
 
     public class RegisterExternalBindingModel

@@ -33,7 +33,7 @@ namespace EsbjergCityBackend.Models
         }
     }
 
-    public class IdentityDbInit : DropCreateDatabaseAlways<ApplicationDbContext>
+    public class IdentityDbInit : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext db)
         {
@@ -42,20 +42,22 @@ namespace EsbjergCityBackend.Models
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
             roleManager.Create(new IdentityRole("Admin"));
+            roleManager.Create(new IdentityRole("User"));
 
-            var admin = new ApplicationUser
+            var admin1 = new ApplicationUser
             {
-                UserName = "Admin",
-                Email = "admin@admin.dk"
+                UserName = "Brigitta",
+                Email = "brigitta@esbjergcity.dk"
             };
-            var user = new ApplicationUser
+            var admin2 = new ApplicationUser
             {
-                UserName = "User",
-                Email = "user@user.dk"
+                UserName = "Ingelise",
+                Email = "ingelise@esbjergcity.dk"
             };
-            userManager.Create(admin, "Test1!");
-            userManager.Create(user, "Test1!");
-            userManager.AddToRole(admin.Id, "Admin");
+            userManager.Create(admin1, "Test1!");
+            userManager.Create(admin2, "Test1!");
+            userManager.AddToRole(admin1.Id, "Admin");
+            userManager.AddToRole(admin2.Id, "Admin");
         }
     }
 }

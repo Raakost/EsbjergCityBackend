@@ -11,6 +11,7 @@ using System.Web.Http.Description;
 using DataAccessLayer;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace EsbjergCityBackend.Controllers
 {
@@ -18,13 +19,17 @@ namespace EsbjergCityBackend.Controllers
     {
         private readonly IRepository<Customer> _cr = new Facade().GetCustomerRepo();
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // GET: api/Customers
         public List<Customer> GetCustomers()
         {
             return _cr.GetAll();
         }
 
-        // GET: api/Customers
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        // GET: api/Customers/5
         [ResponseType(typeof(Customer))]
         public IHttpActionResult GetCustomer(int id)
         {
@@ -37,7 +42,9 @@ namespace EsbjergCityBackend.Controllers
             return Ok(customer);
         }
 
-        // PUT: api/Customers
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        // PUT: api/Customers/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCustomer(int id, Customer customer)
         {
@@ -70,7 +77,9 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
         }
 
-        // DELETE: api/Customers
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        // DELETE: api/Customers/5
         [ResponseType(typeof(Customer))]
         public IHttpActionResult DeleteCustomer(int id)
         {

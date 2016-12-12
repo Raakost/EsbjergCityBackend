@@ -11,20 +11,23 @@ using System.Web.Http.Description;
 using DataAccessLayer;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace EsbjergCityBackend.Controllers
 {
     public class OrdersController : ApiController
-    {
+    {        
         private readonly IRepository<Order> _or = new Facade().GetOrderRepo();
 
-        // GET: api/Orders
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [HttpGet]
         public List<Order> GetOrders()
         {
             return _or.GetAll();
         }
 
-        // GET: api/Orders
+        [HttpGet]
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
         {
@@ -36,7 +39,7 @@ namespace EsbjergCityBackend.Controllers
             return Ok(order);
         }
 
-        // PUT: api/Orders
+        [HttpPut]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
         {
@@ -53,7 +56,7 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Orders
+        [HttpPost]
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
         {
@@ -62,10 +65,12 @@ namespace EsbjergCityBackend.Controllers
                 return BadRequest(ModelState);
             }
             _or.Create(order);
-            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
+            return CreatedAtRoute("DefaultApi", new {id = order.Id}, order);
         }
 
-        // DELETE: api/Orders
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [HttpDelete]
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
         {

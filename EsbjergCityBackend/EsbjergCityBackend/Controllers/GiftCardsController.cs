@@ -11,21 +11,23 @@ using System.Web.Http.Description;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
 using DataAccessLayer;
-using DataAccessLayer.Repository;
+using Microsoft.AspNet.Identity;
 
 namespace EsbjergCityBackend.Controllers
 {
     public class GiftCardsController : ApiController
     {
-        private readonly GiftCardRepo _gr = new Facade().GetGiftcardRepo();
+        private readonly IRepository<GiftCard> _gr = new Facade().GetGiftcardRepo();
 
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // GET: api/GiftCards
         public List<GiftCard> GetGiftCards()
         {
             return _gr.GetAll();
         }
-
-        // GET: api/GiftCards
+        
+        // GET: api/GiftCards/5
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult GetGiftCard(int id)
         {
@@ -38,20 +40,9 @@ namespace EsbjergCityBackend.Controllers
             return Ok(giftCard);
         }
 
-        // GET: api/GiftCards
-        [Route("api/giftcards/GetByCardNumber/{cardNumber}")]
-        public IHttpActionResult GetByCardNumber(string cardNumber)
-        {
-            GiftCard giftCard = _gr.GetByCardNumber(cardNumber);
-            if (giftCard == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(giftCard);
-        }
-
-        // PUT: api/GiftCards
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        // PUT: api/GiftCards/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGiftCard(int id, GiftCard giftCard)
         {
@@ -70,6 +61,7 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
         // POST: api/GiftCards
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult PostGiftCard(GiftCard giftCard)
@@ -84,7 +76,7 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = giftCard.Id }, giftCard);
         }
 
-        // DELETE: api/GiftCards
+        // DELETE: api/GiftCards/5
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult DeleteGiftCard(int id)
         {
