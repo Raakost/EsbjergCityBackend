@@ -32,8 +32,7 @@ namespace DataAccessLayer.Repository
             {
                 return db.Orders.Include("GiftCards").FirstOrDefault(x => x.Id == id);
             }
-        }
-
+        }        
         public List<Order> GetAll()
         {
             using (var db = new EsbjergCityContext())
