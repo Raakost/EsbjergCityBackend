@@ -12,12 +12,13 @@ using DataAccessLayer;
 using DataAccessLayer.Context;
 using DataAccessLayer.Entities;
 using Microsoft.AspNet.Identity;
+using DataAccessLayer.Repository;
 
 namespace EsbjergCityBackend.Controllers
 {
     public class CustomersController : ApiController
     {
-        private readonly IRepository<Customer> _cr = new Facade().GetCustomerRepo();
+        private readonly CustomerRepo _cr = new Facade().GetCustomerRepo();
 
         [Authorize(Roles = "Admin")]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
@@ -26,6 +27,22 @@ namespace EsbjergCityBackend.Controllers
         {
             return _cr.GetAll();
         }
+        // GET: api/Customers/5
+        [Authorize(Roles = "Admin, User")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]        
+        [Route("api/customers/GetByEmail/{email}")]
+        [ResponseType(typeof(Customer))]
+        public IHttpActionResult GetCustomerByEmail(string email)
+        {
+            Customer customer = _cr.GetByEmail(email);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(customer);
+        }
+
 
         [Authorize(Roles = "Admin")]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]

@@ -10,12 +10,12 @@ namespace DataAccessLayer
 {
     public class Facade
     {
-        private IRepository<Customer> _customerRepository;
+        private CustomerRepo _customerRepository;
         private IRepository<Order> _orderRepository;
         private IRepository<Event> _eventRepository;
         private GiftCardRepo _giftCardRepository;
 
-        public IRepository<Customer> GetCustomerRepo()
+        public CustomerRepo GetCustomerRepo()
         {
             return _customerRepository ?? (_customerRepository = new CustomerRepo());
         }

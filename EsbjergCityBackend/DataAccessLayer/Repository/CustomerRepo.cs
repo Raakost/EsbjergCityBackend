@@ -9,7 +9,7 @@ using DataAccessLayer.Entities;
 
 namespace DataAccessLayer.Repository
 {
-    class CustomerRepo : IRepository<Customer>
+    public class CustomerRepo : IRepository<Customer>
     {
         public List<Customer> GetAll()
         {
@@ -18,7 +18,13 @@ namespace DataAccessLayer.Repository
                 return db.Customers.Include(x => x.Orders.Select(y => y.GiftCards)).ToList();
             }
         }
-
+        public Customer GetByEmail(string email)
+        {
+            using (var db = new EsbjergCityContext())
+            {
+                return db.Customers.FirstOrDefault(x => x.Email == email);
+            }
+        }
         public Customer Get(int id)
         {
             using (var db = new EsbjergCityContext())
