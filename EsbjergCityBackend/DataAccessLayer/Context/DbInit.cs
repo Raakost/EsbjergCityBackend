@@ -25,7 +25,56 @@ namespace DataAccessLayer.Context
             var o2 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g3 } };
             var o3 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g4 } };
             var o4 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g5 } };
-            var o5 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g6 } };            
+            var o5 = new Order { IsCompleted = false, DateOfPurchase = DateTime.Now, GiftCards = new List<GiftCard> { g6 } };
+
+            //CUSTOMER
+            var c1 = new Customer
+            {
+                Firstname = "Fornavn",
+                Lastname = "Efternavn",
+                City = "Esbjerg",
+                Zipcode = 6700,
+                Street = "Gade",
+                StreetNumber = 1,
+                Email = "test@test.dk",
+                Orders = new List<Order> { o1 }
+            };
+
+            var c2 = new Customer
+            {
+                Firstname = "Hans",
+                Lastname = "Hansen",
+                City = "Esbjerg",
+                Zipcode = 6700,
+                Street = "EsbjergGade",
+                StreetNumber = 2,
+                Email = "hans@esbjerg.dk",
+                Orders = new List<Order> { o2 }
+            };
+
+            var c3 = new Customer
+            {
+                Firstname = "Jørgen",
+                Lastname = "Hansen",
+                City = "Esbjerg",
+                Zipcode = 6700,
+                Street = "EsbjergGade",
+                StreetNumber = 2,
+                Email = "jørgen@esbjerg.dk",
+                Orders = new List<Order> { o3, o4 }
+            };
+
+            var c4 = new Customer
+            {
+                Firstname = "Jytte",
+                Lastname = "Larsen",
+                City = "Esbjerg",
+                Zipcode = 6700,
+                Street = "EsbjergGade",
+                StreetNumber = 3,
+                Email = "jytte@esbjerg.dk",
+                Orders = new List<Order> { o5 }
+            };
 
             //EVENT
             var e1 = new Event
@@ -107,56 +156,6 @@ namespace DataAccessLayer.Context
                           "Fusce sem lacus, imperdiet tincidunt varius a, iaculis luctus tortor. Nullam hendrerit, arcu at volutpat porttitor, ex ex pretium neque, quis semper nunc turpis sed sem. Nunc eget aliquet elit. Suspendisse tempus venenatis mollis. Maecenas et lobortis dolor, tempor suscipit libero. Morbi nec mauris lacinia felis tincidunt blandit. Morbi accumsan lacinia tempor. Mauris sollicitudin auctor nibh eget ultricies. Nam tincidunt volutpat turpis, id dignissim elit eleifend ut. Praesent et sollicitudin lorem. Ut vitae felis risus. Sed sed tortor magna. Nulla imperdiet sagittis ante. Aliquam nec ornare quam.",
                 Title = "Lorem ipsum",
                 Img = "/Content/Images/9.jpg"
-            };
-
-
-            //CUSTOMER
-            var c1 = new Customer
-            {
-                Firstname = "jens",
-                Lastname = "bobbo",
-                City = "Esbjerg",
-                Zipcode = 6700,
-                Street = "EsbjergGade",
-                StreetNumber = 1,
-                Email = "jens@esbjerg.dk",
-                Orders = new List<Order> { o1 }
-            };
-
-            var c2 = new Customer
-            {
-                Firstname = "Hans",
-                Lastname = "Hansen",
-                City = "Esbjerg",
-                Zipcode = 6700,
-                Street = "EsbjergGade",
-                StreetNumber = 2,
-                Email = "hans@esbjerg.dk",
-                Orders = new List<Order> { o2 }
-            };
-
-            var c3 = new Customer
-            {
-                Firstname = "Jørgen",
-                Lastname = "Hansen",
-                City = "Esbjerg",
-                Zipcode = 6700,
-                Street = "EsbjergGade",
-                StreetNumber = 2,
-                Email = "jørgen@esbjerg.dk",
-                Orders = new List<Order> { o3, o4 }
-            };
-
-            var c4 = new Customer
-            {
-                Firstname = "Jytte",
-                Lastname = "Larsen",
-                City = "Esbjerg",
-                Zipcode = 6700,
-                Street = "EsbjergGade",
-                StreetNumber = 3,
-                Email = "jytte@esbjerg.dk",
-                Orders = new List<Order> { o5 }
             };
 
             //SEED DB

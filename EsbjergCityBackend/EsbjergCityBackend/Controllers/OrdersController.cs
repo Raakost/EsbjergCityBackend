@@ -16,18 +16,20 @@ using Microsoft.AspNet.Identity;
 namespace EsbjergCityBackend.Controllers
 {
     public class OrdersController : ApiController
-    {        
+    {
         private readonly IRepository<Order> _or = new Facade().GetOrderRepo();
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         public List<Order> GetOrders()
         {
             return _or.GetAll();
         }
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
         {
@@ -39,8 +41,9 @@ namespace EsbjergCityBackend.Controllers
             return Ok(order);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
         {
@@ -57,8 +60,9 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Authorize(Roles = "Admin, User")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
         {
@@ -67,11 +71,12 @@ namespace EsbjergCityBackend.Controllers
                 return BadRequest(ModelState);
             }
             _or.Create(order);
-            return CreatedAtRoute("DefaultApi", new {id = order.Id}, order);
+            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [AllowAnonymous]
+        //[Authorize(Roles = "Admin")]
+        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
         {
