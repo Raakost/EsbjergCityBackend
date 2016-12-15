@@ -21,13 +21,13 @@ namespace EsbjergCityBackend.Controllers
 
         [Authorize(Roles = "Admin")]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [HttpGet]
         public List<Order> GetOrders()
         {
             return _or.GetAll();
         }
 
-        [HttpGet]
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
         {
@@ -39,7 +39,8 @@ namespace EsbjergCityBackend.Controllers
             return Ok(order);
         }
 
-        [HttpPut]
+        [Authorize(Roles = "Admin")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
         {
@@ -56,7 +57,8 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [HttpPost]
+        [Authorize(Roles = "Admin, User")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
         {
@@ -70,7 +72,6 @@ namespace EsbjergCityBackend.Controllers
 
         [Authorize(Roles = "Admin")]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
-        [HttpDelete]
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)
         {
