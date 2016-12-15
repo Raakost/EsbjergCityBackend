@@ -10,14 +10,16 @@ namespace DataAccessLayer.Repository
 {
     class OrderRepo : IRepository<Order>
     {
+        public CustomerRepo _cr = new CustomerRepo();
         public Order Create(Order t)
         {
             using (var db = new EsbjergCityContext())
             {
+                db.Customers.Attach(t.Customer);
                 List<GiftCard> giftCards = new List<GiftCard>();
                 foreach (var i in t.GiftCards)
                 {
-                    giftCards.Add(db.GiftCards.FirstOrDefault(x => x.Id == t.Id));
+                    giftCards.Add(i);
                 }
                 t.GiftCards = giftCards;
                 db.Orders.Add(t);
