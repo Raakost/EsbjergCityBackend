@@ -29,12 +29,12 @@ namespace EsbjergCityBackend.Controllers
         }
         // GET: api/Customers/5
         [Authorize(Roles = "Admin, User")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]        
-        [Route("api/customers/GetByEmail/{email}")]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Route("api/customers/GetByEmail/{userName}/")]
         [ResponseType(typeof(Customer))]
-        public IHttpActionResult GetCustomerByEmail(string email)
+        public IHttpActionResult GetByEmail(string userName)
         {
-            Customer customer = _cr.GetByEmail(email);
+            Customer customer = _cr.GetByEmail(userName);
             if (customer == null)
             {
                 return NotFound();
@@ -75,7 +75,7 @@ namespace EsbjergCityBackend.Controllers
                 return BadRequest();
             }
 
-            _cr.Update(customer);           
+            _cr.Update(customer);
 
             return StatusCode(HttpStatusCode.NoContent);
         }
