@@ -61,6 +61,7 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [AllowAnonymous]
         // GET: api/GiftCards
         [Route("api/giftcards/GetByCardNumber/{cardNumber}")]
         public IHttpActionResult GetByCardNumber(string cardNumber)
@@ -89,6 +90,7 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = giftCard.Id }, giftCard);
         }
 
+        [Authorize(Roles = "Admin")]
         // DELETE: api/GiftCards/5
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult DeleteGiftCard(int id)
