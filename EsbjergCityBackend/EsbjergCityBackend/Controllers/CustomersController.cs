@@ -85,6 +85,11 @@ namespace EsbjergCityBackend.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (_cr.GetByEmail(customer.Email) != null)
+            {
+                return BadRequest();
+            }
+
             _cr.Create(customer);
 
             return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
