@@ -40,9 +40,7 @@ namespace EsbjergCityBackend.Controllers
             return Ok(_event);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
-        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Authorize(Roles = "Admin")]        
         // PUT: api/Events/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutEvent(int id, Event _event)
@@ -60,10 +58,8 @@ namespace EsbjergCityBackend.Controllers
             _er.Update(_event);
             return StatusCode(HttpStatusCode.NoContent);
         }
-
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
-        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        
+        [Authorize(Roles = "Admin")]
         // POST: api/Events
         [ResponseType(typeof(Event))]
         public IHttpActionResult PostEvent(Event _event)
@@ -78,9 +74,7 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = _event.Id }, _event);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
-        //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Authorize(Roles = "Admin")]        
         // DELETE: api/Events/5
         [ResponseType(typeof(Event))]
         public IHttpActionResult DeleteEvent(int id)

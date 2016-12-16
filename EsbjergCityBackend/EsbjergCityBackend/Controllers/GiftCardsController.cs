@@ -21,13 +21,13 @@ namespace EsbjergCityBackend.Controllers
         private readonly GiftCardRepo _gr = new Facade().GetGiftcardRepo();
 
         [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // GET: api/GiftCards
         public List<GiftCard> GetGiftCards()
         {
             return _gr.GetAll();
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: api/GiftCards/5
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult GetGiftCard(int id)
@@ -42,7 +42,6 @@ namespace EsbjergCityBackend.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         // PUT: api/GiftCards/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutGiftCard(int id, GiftCard giftCard)

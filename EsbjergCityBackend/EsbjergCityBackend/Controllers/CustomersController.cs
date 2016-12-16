@@ -20,16 +20,14 @@ namespace EsbjergCityBackend.Controllers
     {
         private readonly CustomerRepo _cr = new Facade().GetCustomerRepo();
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Authorize(Roles = "Admin")]        
         // GET: api/Customers
         public List<Customer> GetCustomers()
         {
             return _cr.GetAll();
         }
         // GET: api/Customers/5
-        [Authorize(Roles = "Admin, User")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Authorize(Roles = "Admin, User")]        
         [Route("api/customers/GetByEmail/{userName}/")]
         [ResponseType(typeof(Customer))]
         public IHttpActionResult GetByEmail(string userName)
@@ -44,8 +42,7 @@ namespace EsbjergCityBackend.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Authorize(Roles = "Admin")]        
         // GET: api/Customers/5
         [ResponseType(typeof(Customer))]
         public IHttpActionResult GetCustomer(int id)
@@ -59,8 +56,7 @@ namespace EsbjergCityBackend.Controllers
             return Ok(customer);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Authorize(Roles = "Admin")]        
         // PUT: api/Customers/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCustomer(int id, Customer customer)
@@ -94,8 +90,7 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = customer.Id }, customer);
         }
 
-        [Authorize(Roles = "Admin")]
-        [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
+        [Authorize(Roles = "Admin")]        
         // DELETE: api/Customers/5
         [ResponseType(typeof(Customer))]
         public IHttpActionResult DeleteCustomer(int id)
