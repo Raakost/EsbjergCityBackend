@@ -37,8 +37,16 @@ namespace DataAccessLayer.Repository
         {
             using (var db = new EsbjergCityContext())
             {
-                var customer = db.Customers.Include("Orders").FirstOrDefault(x => x.Id == t.Id);
+                var customer = db.Customers.Include(x => x.Orders.Select(y => y.GiftCards)).FirstOrDefault(x => x.Id == t.Id);
                 var orders = customer.Orders.ToList();
+                var giftCards = customer.Orders.SelectMany(x => x.GiftCards).ToList();
+                if (giftCards.Count != 0)
+                {
+                    foreach (var giftCard in giftCards)
+                    {
+                        db.Entry(giftCard).State = EntityState.Deleted;
+                    }
+                }
                 if (orders.Count != 0)
                 {
                     foreach (var order in orders)
@@ -46,6 +54,7 @@ namespace DataAccessLayer.Repository
                         db.Entry(order).State = EntityState.Deleted;
                     }
                 }
+
                 db.Entry(customer).State = EntityState.Deleted;
                 db.SaveChanges();
                 return db.Orders.FirstOrDefault(x => x.Id == t.Id) == null;

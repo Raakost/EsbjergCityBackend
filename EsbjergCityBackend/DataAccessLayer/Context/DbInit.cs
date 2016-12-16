@@ -30,13 +30,13 @@ namespace DataAccessLayer.Context
             //CUSTOMER
             var c1 = new Customer
             {
-                Firstname = "Fornavn",
-                Lastname = "Efternavn",
+                Firstname = "Benny",
+                Lastname = "Hansen",
                 City = "Esbjerg",
                 Zipcode = 6700,
-                Street = "Gade",
-                StreetNumber = 1,
-                Email = "test@test.dk",
+                Street = "Gadennn",
+                StreetNumber = 122,
+                Email = "ere@erer.dk",
                 Orders = new List<Order> { o1 }
             };
 
