@@ -122,7 +122,6 @@ namespace EsbjergCityBackend.Tests.RepoTest
             Assert.IsTrue(isDeleted == null);
             _cr.Delete(createdCustomer);
         }
-
         [TestMethod]
         public void GiftcardTest()
         {
