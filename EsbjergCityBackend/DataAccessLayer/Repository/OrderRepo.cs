@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -34,7 +35,7 @@ namespace DataAccessLayer.Repository
             {
                 return db.Orders.Include("GiftCards").FirstOrDefault(x => x.Id == id);
             }
-        }        
+        }
         public List<Order> GetAll()
         {
             using (var db = new EsbjergCityContext())
@@ -47,7 +48,12 @@ namespace DataAccessLayer.Repository
         {
             using (var db = new EsbjergCityContext())
             {
-                db.Entry(db.Orders.FirstOrDefault(x => x.Id == t.Id)).State = System.Data.Entity.EntityState.Deleted;
+                var order = db.Orders.Include("GiftCards").FirstOrDefault(x => x.Id == t.Id);
+                foreach (var giftcard in order.GiftCards.ToList())
+                {
+                    db.Entry(giftcard).State = EntityState.Deleted;
+                }
+                db.Entry(order).State = System.Data.Entity.EntityState.Deleted;
                 db.SaveChanges();
                 return db.Orders.FirstOrDefault(x => x.Id == t.Id) == null;
             }

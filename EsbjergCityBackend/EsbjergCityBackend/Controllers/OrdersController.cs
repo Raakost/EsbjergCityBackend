@@ -19,16 +19,16 @@ namespace EsbjergCityBackend.Controllers
     {
         private readonly IRepository<Order> _or = new Facade().GetOrderRepo();
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         public List<Order> GetOrders()
         {
             return _or.GetAll();
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult GetOrder(int id)
@@ -41,8 +41,8 @@ namespace EsbjergCityBackend.Controllers
             return Ok(order);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutOrder(int id, Order order)
@@ -60,8 +60,8 @@ namespace EsbjergCityBackend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin, User")]
         //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult PostOrder(Order order)
@@ -74,8 +74,8 @@ namespace EsbjergCityBackend.Controllers
             return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
         }
 
-        [AllowAnonymous]
-        //[Authorize(Roles = "Admin")]
+        //[AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         //[HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [ResponseType(typeof(Order))]
         public IHttpActionResult DeleteOrder(int id)

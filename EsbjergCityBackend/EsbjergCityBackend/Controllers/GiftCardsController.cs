@@ -27,7 +27,7 @@ namespace EsbjergCityBackend.Controllers
         {
             return _gr.GetAll();
         }
-        
+
         // GET: api/GiftCards/5
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult GetGiftCard(int id)
@@ -76,6 +76,7 @@ namespace EsbjergCityBackend.Controllers
         }
 
         // POST: api/GiftCards
+        [Authorize(Roles = "Admin, User")]
         [ResponseType(typeof(GiftCard))]
         public IHttpActionResult PostGiftCard(GiftCard giftCard)
         {
