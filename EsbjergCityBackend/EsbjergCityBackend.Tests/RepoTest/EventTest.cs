@@ -13,7 +13,6 @@ namespace EsbjergCityBackend.Tests.RepoTest
     public class EventTest
     {
         public static int createdId;
-
         IRepository<Event> _er = new Facade().GetEventRepo();
         Event c = new Event()
         {
@@ -32,7 +31,7 @@ namespace EsbjergCityBackend.Tests.RepoTest
         }
 
         [TestMethod]
-        public void TestReadAllEvent()
+        public void TestReadAllEvents()
         {
             Assert.IsTrue(_er.GetAll() != null);
         }
@@ -42,6 +41,25 @@ namespace EsbjergCityBackend.Tests.RepoTest
         {
             var getById = _er.Get(createdId);
             Assert.IsTrue(getById != null);
+        }
+
+        [TestMethod]
+        public void UpdateEvent()
+        {
+            var getById = _er.Get(createdId);
+            getById.Title = "AnotherTestTitle";
+            _er.Update(getById);
+            var readByIdAgain = _er.Get(createdId);
+            Assert.IsTrue(readByIdAgain.Title == "AnotherTestTitle");
+        }
+
+        [TestMethod]
+        public void TestDeleteEvent()
+        {
+            var readByIdAgain = _er.Get(createdId);
+            var toDelete = _er.Delete(readByIdAgain);
+            var isDeleted = _er.Get(createdId);
+            Assert.IsTrue(isDeleted == null);
         }
 
     }
