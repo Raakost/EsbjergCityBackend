@@ -8,7 +8,7 @@ using DataAccessLayer.Entities;
 
 namespace DataAccessLayer.Context
 {
-    public class DbInit : CreateDatabaseIfNotExists<EsbjergCityContext>
+    public class DbInit : DropCreateDatabaseAlways<EsbjergCityContext>
     {
         protected override void Seed(EsbjergCityContext db)
         {
