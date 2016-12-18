@@ -8,13 +8,13 @@ using DataAccessLayer.Entities;
 using DataAccessLayer.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EsbjergCityBackend.Tests.RepoTest
+namespace EsbjergCityBackend.Tests
 {
     [TestClass]
     public class CustomerTest
     {
         CustomerRepo _cr = new Facade().GetCustomerRepo();
-        Customer c = null;
+        Customer c = null;        
 
         [TestMethod]
         public void TestCreateCustomer()
@@ -40,7 +40,7 @@ namespace EsbjergCityBackend.Tests.RepoTest
         }
 
         [TestMethod]
-        public void TestReadCustomer()
+        public void TestReadCustomerByEmail()
         {
             var readByEmail = _cr.GetByEmail("test@test.dk");
             Assert.IsTrue(readByEmail != null);

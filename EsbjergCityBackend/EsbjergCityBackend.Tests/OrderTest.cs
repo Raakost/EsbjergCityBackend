@@ -8,7 +8,7 @@ using DataAccessLayer.Entities;
 using DataAccessLayer.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EsbjergCityBackend.Tests.RepoTest
+namespace EsbjergCityBackend.Tests
 {
     [TestClass]
     public class OrderTest

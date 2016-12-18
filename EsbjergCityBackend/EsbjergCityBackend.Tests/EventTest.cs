@@ -7,7 +7,7 @@ using DataAccessLayer;
 using DataAccessLayer.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EsbjergCityBackend.Tests.RepoTest
+namespace EsbjergCityBackend.Tests
 {
     [TestClass]
     public class EventTest
